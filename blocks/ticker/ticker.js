@@ -1,4 +1,3 @@
-// Stock data
 const stocks = [
     { symbol: "NIFTY 50", price: "22,514.65", change: "+0.45%" },
     { symbol: "SENSEX", price: "74,248.22", change: "+0.47%" },
@@ -8,34 +7,26 @@ const stocks = [
     { symbol: "INFY", price: "1,452.10", change: "+0.30%" },
     { symbol: "ICICI BANK", price: "1,084.50", change: "+1.15%" }
 ];
-
-// Function to create ticker
+ 
 function createTicker() {
     const ticker = document.getElementById('stock-ticker');
-
-    if (!ticker) {
-        console.error("Element with ID 'stock-ticker' not found.");
-        return;
-    }
-
-    // Generate HTML for stocks
+    // Function to generate the HTML for a single stock
     const stockHTML = stocks.map(stock => {
         const isUp = stock.change.includes('+');
-
         return `
-            <div class="stock-item">
-                <span class="symbol">${stock.symbol}</span>
-                <span class="price">₹${stock.price}</span>
-                <span class="change ${isUp ? 'up' : 'down'}">
+<div class="stock-item">
+<span class="symbol">${stock.symbol}</span>
+<span class="price">₹${stock.price}</span>
+<span class="change ${isUp ? 'up' : 'down'}">
                     ${isUp ? '▲' : '▼'} ${stock.change}
-                </span>
-            </div>
+</span>
+</div>
         `;
     }).join('');
-
-    // Duplicate content for smooth scrolling effect
+ 
+    // Duplicate the content to ensure the loop is seamless
     ticker.innerHTML = stockHTML + stockHTML;
 }
-
-// Run after DOM loads
-document.addEventListener("DOMContentLoaded", createTicker);
+ 
+// Initialize
+createTicker();
