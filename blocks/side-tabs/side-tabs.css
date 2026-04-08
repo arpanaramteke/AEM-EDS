@@ -1,0 +1,35 @@
+.side-tabs {
+  display: flex;
+  gap: 40px;
+}
+ 
+.side-tabs-nav {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+ 
+.side-tabs-nav button {
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+ 
+.side-tabs-nav button.active {
+  font-weight: bold;
+  border-left: 3px solid black;
+}
+ 
+.side-tabs-content {
+  flex: 1;
+}
+ 
+.tab-panel {
+  display: none;
+}
+ 
+.tab-panel.active {
+  display: block;
+}
