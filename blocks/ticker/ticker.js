@@ -1,13 +1,13 @@
 export default function decorate(block) {
   // 1. Initial State / Fallback Data
-  const stocks = {
+ /* const stocks = {
     RELIANCE: { price: 2971.30, change: 12.40, isUp: true },
     TCS: { price: 3945.00, change: -5.20, isUp: false },
     HDFCBANK: { price: 1528.00, change: 8.50, isUp: true },
     INFY: { price: 1452.10, change: 10.30, isUp: true },
     ICICIBANK: { price: 1084.50, change: -2.15, isUp: false },
     SBI: { price: 765.20, change: 4.10, isUp: true }
-  };
+  };*/
 
   // 2. Create ticker track container
   const tickerTrack = document.createElement('div');
