@@ -13,6 +13,12 @@ const stocks = {
   const tickerTrack = document.createElement('div');
   tickerTrack.className = 'ticker-track';
 
+const tickerContainer = document.getElementById('ticker-container');
+
+const tickerTrack = document.createElement('div');
+tickerTrack.className = 'ticker-track';
+
+
 // 2. Build the Ticker UI
 function initializeTicker() {
   let html = '';
