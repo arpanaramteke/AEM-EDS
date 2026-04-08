@@ -8,16 +8,7 @@ const stocks = {
   "SBI": { price: 765.20, change: 4.10, isUp: true }
 };
 
-//const tickerContainer = document.getElementById('ticker-container');
-  // 2. Create ticker track container
-  const tickerTrack = document.createElement('div');
-  tickerTrack.className = 'ticker-track';
-
 const tickerContainer = document.getElementById('ticker-container');
-
-const tickerTrack = document.createElement('div');
-tickerTrack.className = 'ticker-track';
-
 
 // 2. Build the Ticker UI
 function initializeTicker() {
@@ -35,7 +26,9 @@ function initializeTicker() {
       <div class="stock-box" data-symbol="${symbol}">
         <span class="stock-symbol">${symbol}</span>
         <span class="stock-price">₹${data.price.toFixed(2)}</span>
-        <span class="stock-change ${colorClass}">${arrow} ${sign}${data.change.toFixed(2)}</span>
+        <span class="stock-change ${colorClass}">
+          ${arrow} ${sign}${data.change.toFixed(2)}
+        </span>
       </div>
     `;
   });
