@@ -86,6 +86,30 @@ export default function decorate(block) {
   // 7. Initialize
   initializeTicker();
 
+  // Render the initial UI
+initializeTicker();
+
+// =========================================================
+// 4. THE LIVE CONNECTION
+// =========================================================
+
+/* 
+  HOW TO USE A REAL BROKER WEBSOCKET:
+  Uncomment and configure the code below using your Indian broker's API.*/
+  
+  const ws = new WebSocket('wss://ws.finnhub.io');
+  
+  ws.onmessage = function(event) {
+     const liveData = JSON.parse(event.data);
+     // Assuming liveData looks like: { symbol: "RELIANCE", ltp: 2975.50 }
+     updateStockPrice(liveData.symbol, liveData.ltp); 
+  };
+
+
+// SIMULATION FOR DEMONSTRATION: 
+// This simulates incoming WebSocket ticks. It randomly selects a stock 
+// every 1 second and fluctuates its price to demonstrate the live update.
+
   // 8. Simulation (replace with real WebSocket for live data)
   setInterval(() => {
     const symbols = Object.keys(stocks);
