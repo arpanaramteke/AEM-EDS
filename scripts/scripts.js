@@ -216,5 +216,12 @@ async function loadPage() {
   await loadLazy(document);
   loadDelayed();
 }
+export function getUrlExtension(url) {
+  // Remove query parameters to get the base path
+  const baseName = url.split(/[?#]/)[0];
+  // Extract the last part after the dot
+  const ext = baseName.split('.').pop();
+  return ext.toLowerCase();
+}
 
 loadPage();
