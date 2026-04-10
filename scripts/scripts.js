@@ -113,6 +113,7 @@ function decorateButtons(main) {
   });
 }
 
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -124,6 +125,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateExternalImages(main, '//External Image//');
 }
 
 /**
@@ -168,6 +170,35 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+}
+
+
+function decorateExternalImages(ele, deliveryMarker) {
+  const extImages = ele.querySelectorAll('a');
+  extImages.forEach((extImage) => {
+    if (isExternalImage(extImage, deliveryMarker)) {
+      const extImageSrc = extImage.getAttribute('href');
+      const extPicture = createOptimizedPicture(extImageSrc);
+
+      /* copy query params from link to img */
+      const extImageUrl = new URL(extImageSrc);
+      const { searchParams } = extImageUrl;
+      extPicture.querySelectorAll('source, img').forEach((child) => {
+        if (child.tagName === 'SOURCE') {
+          const srcset = child.getAttribute('srcset');
+          if (srcset) {
+            child.setAttribute('srcset', appendQueryParams(new URL(srcset, extImageSrc), searchParams));
+          }
+        } else if (child.tagName === 'IMG') {
+          const src = child.getAttribute('src');
+          if (src) {
+            child.setAttribute('src', appendQueryParams(new URL(src, extImageSrc), searchParams));
+          }
+        }
+      });
+      extImage.parentNode.replaceChild(extPicture, extImage);
+    }
+  });
 }
 
 /**
