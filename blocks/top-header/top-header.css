@@ -1,0 +1,12 @@
+.top-header{
+    display: flex;
+    justify-content: space-between;
+    background: red;
+    color: white;
+padding: 100px 20px;}
+
+nav-item{
+
+    margin: 0 10px;
+    cursor: pointer;
+}
