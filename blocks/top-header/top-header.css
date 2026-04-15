@@ -1,12 +1,19 @@
-.top-header{
-    display: flex;
-    justify-content: space-between;
-    background: red;
-    color: white;
-padding: 100px 20px;}
-
-nav-item{
-
-    margin: 0 10px;
-    cursor: pointer;
+.top-header {
+  background-color: #e53935; /* red */
+  color: white;
+  font-size: 14px;
+  padding: 8px 20px;
+}
+ 
+.top-header .top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+ 
+.top-header .left,
+.top-header .right {
+  display: flex;
+  gap: 20px;
 }

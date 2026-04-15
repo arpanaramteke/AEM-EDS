@@ -1,10 +1,10 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
-  /* change to ul, li */
-  const navItems= 
-  block.querySelectorAll('li');
-  navItems.forEach(item=>{
-    item.classList.add('nav-item')
-  });
+  const text = block.textContent;
+ 
+  block.innerHTML = `
+    <div class="top-container">
+      <div class="left">${text}</div>
+      <div class="right">Open hours: 9am–6pm</div>
+    </div>
+  `;
 }
